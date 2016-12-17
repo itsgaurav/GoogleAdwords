@@ -1,0 +1,55 @@
+.panel-login {
+	border-color: #ccc;
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+  .panel-heading {
+    text-align: center;
+    a {
+      text-decoration: none;
+      color: #666;
+      font-weight: bold;
+      font-size: 15px;
+    }
+    a.active {
+      color: #029f5b;
+      font-size: 18px;
+    }
+  }
+}
+.panel-body {
+	.links {
+		a {
+			text-decoration: underline;
+  		color: #666;
+		}
+	}
+}
+.btn-login {
+	background-color: #59B2E0;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  height: auto;
+  font-weight: normal;
+  padding: 14px 0;
+  text-transform: uppercase;
+  border-color: #59B2E6;
+}
+
+.btn-register {
+  background-color: #1CB94E;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  height: auto;
+  font-weight: normal;
+  padding: 14px 0;
+  text-transform: uppercase;
+  border-color: #1CB94A;
+}
+.csv-upload {
+  margin-bottom: 20px;
+  .upload-form {
+    width: 33%;
+    margin-left: 33%;
+  }
+}

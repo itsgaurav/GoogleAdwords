@@ -1,0 +1,20 @@
+defaults: &defaults
+  adapter: mysql2
+  encoding: utf8
+  pool: 25
+  reaping_frequency: 20
+  username: root
+  # password: root
+  # socket: /var/run/mysqld/mysqld.sock
+
+development:
+  database: adwords_dev
+  <<: *defaults
+
+test:
+  database: adwords_test
+  <<: *defaults
+
+production:
+  database: adwords_production
+  <<: *defaults
