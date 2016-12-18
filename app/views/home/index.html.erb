@@ -1,6 +1,6 @@
 <div class="row csv-upload">
   <div class="upload-form">
-    <%= form_tag '/upload', multipart: true do %>
+    <%= form_tag '/keywords', multipart: true do %>
       <label for="file">File to Upload</label> <%= file_field_tag "file" %>
       <%= submit_tag "Upload", :class => "form-control btn btn-primary" %>
     <% end %>
@@ -8,12 +8,117 @@
   
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">Panel Heading</div>
-  <div class="panel-body">Panel Content</div>
-</div>
+<% @keywords.each do |keyword| %>
+  <div class="panel panel-default keyword-result">
+    <div class="panel-heading">
+      <%= keyword.keyword %> - <%= link_to 'View Html Page', keyword_path(keyword), :class => 'awe-btn awe-btn-1 awe-btn-medium' %>
+    </div>
+    <div class="panel-body">
 
-<div class="panel panel-default">
-  <div class="panel-heading">Panel Heading</div>
-  <div class="panel-body">Panel Content</div>
-</div>
+      <div class="row">
+        <div class="col-sm-4">
+          <span>Total adwords count: <%= keyword.total_adwords_count %></span>
+        </div>
+        
+        <div class="col-sm-4">
+          <span>Top adwords count: <%= keyword.top_adwords_count %></span>
+          <% if keyword.top_adwords_count > 0 %>
+            <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#top-adword-<%= keyword.id%>" >
+              view
+            </button>
+            <div id="top-adword-<%= keyword.id%>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Total Adwords on Top</h4>
+                  </div>
+                  <div class="modal-body">
+                    <% JSON.parse(keyword.top_adword_urls).each_with_index do |link,i| %>
+                      <p> <%= i + 1 %> - <%= link %></p>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="col-sm-4">
+          <span>Bottom adwords count: <%= keyword.bottom_adwords_count %></span>
+          <% if keyword.bottom_adwords_count > 0 %>
+            <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#bottom-adword-<%= keyword.id%>" >
+              view
+            </button>
+            <div id="bottom-adword-<%= keyword.id%>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Total Adwords on Right</h4>
+                  </div>
+                  <div class="modal-body">
+                    <% JSON.parse(keyword.bottom_adword_urls).each_with_index do |link,i| %>
+                      <p> <%= i + 1 %> - <%= link %></p>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <span>Non Adwords count: <%= keyword.non_adwords_count %></span>
+          <% if keyword.non_adwords_count > 0 %>
+            <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#non-adword-<%= keyword.id%>" >
+              view
+            </button>
+            <div id="non-adword-<%= keyword.id%>" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Non Adwords URL</h4>
+                  </div>
+                  <div class="modal-body">
+                    <% JSON.parse(keyword.non_adword_urls).each_with_index do |link,i| %>
+                      <p> <%= i + 1 %> - <%= link_to link %></p>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="col-sm-4">
+          <span>Total links count: <%= keyword.total_link_count %></span>
+        </div>
+
+        <div class="col-sm-4">
+          <span>Search Result: <%= keyword.total_search_result %></span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<% end %>
+
+
+

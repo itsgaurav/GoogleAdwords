@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  csv_parser:
+    error:
+      empty: "No keywords present in file"
+      too_large_exception: "Too many keywords"
+      incorrect_content: "Incorrect file content"
+    success: "success"
+

@@ -53,3 +53,9 @@
     margin-left: 33%;
   }
 }
+.modal-dialog {
+  z-index: 9999;
+  .modal-body {
+    word-wrap: break-word;
+  }
+}

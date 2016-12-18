@@ -14,19 +14,19 @@ ActiveRecord::Schema.define(version: 20161213155939) do
 
   create_table "user_keywords", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id"
-    t.string   "keyword",                           default: "", null: false
-    t.integer  "top_adwords_count",                 default: 0,  null: false
-    t.integer  "right_adwords_count",               default: 0,  null: false
-    t.integer  "total_adwords_count",               default: 0,  null: false
-    t.integer  "non_adwords_count",                 default: 0,  null: false
-    t.integer  "total_link_count",                  default: 0,  null: false
-    t.text     "top_adwords_links",   limit: 65535,              null: false
-    t.text     "right_adwords_links", limit: 65535,              null: false
-    t.text     "non_adwords_links",   limit: 65535,              null: false
-    t.text     "total_search_result", limit: 65535,              null: false
-    t.text     "html_code",           limit: 65535,              null: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.string   "keyword",                            default: "", null: false
+    t.integer  "top_adwords_count",                  default: 0,  null: false
+    t.integer  "bottom_adwords_count",               default: 0,  null: false
+    t.integer  "total_adwords_count",                default: 0,  null: false
+    t.integer  "non_adwords_count",                  default: 0,  null: false
+    t.integer  "total_link_count",                   default: 0,  null: false
+    t.text     "top_adword_urls",      limit: 65535,              null: false
+    t.text     "bottom_adword_urls",   limit: 65535,              null: false
+    t.text     "non_adwords_urls",     limit: 65535,              null: false
+    t.text     "total_search_result",  limit: 65535,              null: false
+    t.text     "raw_html",             limit: 65535,              null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.index ["user_id"], name: "index_user_keywords_on_user_id", using: :btree
   end
 

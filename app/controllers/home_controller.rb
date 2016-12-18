@@ -4,4 +4,5 @@ class HomeController < ApplicationController
 	def index
 		@keywords = current_user.user_keywords
 	end
+
 end
