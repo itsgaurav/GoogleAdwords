@@ -6,4 +6,6 @@ class UserKeyword < ActiveRecord::Base
     :non_adwords_count, :total_link_count,
     :raw_html, presence: true
 
+  default_scope { order('keyword asc') }
+
 end
